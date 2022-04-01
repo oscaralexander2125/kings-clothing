@@ -1,5 +1,3 @@
-//import { async } from "@firebase/util";
-import { async } from "@firebase/util";
 import { initializeApp } from "firebase/app";
 import {
   getAuth,
@@ -7,6 +5,7 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
 } from "firebase/auth";
 import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
 
@@ -35,6 +34,12 @@ export const signInWithGooglePopup = () =>
 
 export const signInWithGoogleRedirect = () =>
   signInWithRedirect(auth, googleProvider);
+
+export const signInAuthWithEmailAndPass = async (email, password) => {
+  if(!email || !password) return;
+  
+  return await signInWithEmailAndPassword(auth, email, password);
+};
 
 export const db = getFirestore();
 
@@ -66,13 +71,6 @@ export const createUserDocumentFromAuth = async (
   }
 
   return userDocRef;
-
-  //if user data exists
-  //create / set the document with the data from userAuth in my collection
-
-  //if user data doesnt exists
-
-  //return userDocRef
 };
 
 export const createAuthUserWithEmailAndPassword = async (email, password) => {
