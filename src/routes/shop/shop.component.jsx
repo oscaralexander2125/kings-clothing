@@ -9,9 +9,9 @@ const Shop = () => {
 
   return (
     <div className="products-container">
-      {currentShop.map((currentShop) => {
+      {currentShop.map((currentProduct) => {
         return (
-          <ProductCard key={currentShop.id} currentShop={currentShop} />
+          <ProductCard key={currentProduct.id} currentProduct={currentProduct} />
         );
       })}
     </div>

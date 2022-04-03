@@ -10,9 +10,5 @@ export const ShopProvider = ({ children }) => {
   const [currentShop, setCurrentShop] = useState(SHOP_DATA);
   const value = { currentShop, setCurrentShop };
 
-  /*useEffect(() => {
-    setCurrentShop(SHOP_DATA);
-  }, []);*/
-
   return <ShopContext.Provider value={value}>{children}</ShopContext.Provider>;
 };
