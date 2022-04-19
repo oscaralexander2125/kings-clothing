@@ -1,16 +1,23 @@
-import React, { useContext, useState } from "react";
-import { CartContext } from "../../contexts/cart.context";
+import React from "react";
+import {
+  selectIsDisplayed,
+  selectNewCartCount,
+} from "../../store/cart/cart.selector";
 import {
   ShoppingIcon,
   CartIconContainer,
   ItemCount,
 } from "./cart-icon.styles.jsx";
+import { useSelector, useDispatch } from "react-redux";
+import { setDisplayed } from "../../store/cart/cart.action";
 
 const CartIcon = () => {
-  const { isDisplayed, setDisplayed, totalQuantity } = useContext(CartContext);
+  const isDisplayed = useSelector(selectIsDisplayed);
+  const totalQuantity = useSelector(selectNewCartCount);
+  const dispatch = useDispatch();
 
   const handleToggle = () => {
-    setDisplayed(!isDisplayed);
+    dispatch(setDisplayed(!isDisplayed));
   };
 
   return (
